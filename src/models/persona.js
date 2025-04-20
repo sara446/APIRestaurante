@@ -4,6 +4,10 @@ const personaSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    cedula: {
+        type: String,
+        required: true,
+    },
     telefono: {
         type: Number,
         required: true,
@@ -12,11 +16,11 @@ const personaSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    fecha: {
-        type: Date,
-        required: false,
+    direccion: {
+        type: String,
+        required: true,
     },
-    lugar: {
+    codigo: {
         type: String,
         required: true,
     }

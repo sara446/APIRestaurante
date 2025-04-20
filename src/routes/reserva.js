@@ -37,5 +37,36 @@ reservaSchema
     .catch((error) => res.json({ message: error }));
 });
 
+
+//Consultar todos las reservas
+router.get("/reserva", (req, res) => {
+    reservaSchema.find()
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
+
+//Consultar una reserva por su id
+router.get("/reserva/:id", (req, res) => {
+    const { id } = req.params;
+    reservaSchema
+        .findById(id)
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
+
+router.delete("/reserva/:id", (req, res) => {
+    const { id } = req.params;
+    reservaSchema
+        .findByIdAndDelete(id)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+
+
+
 module.exports = router;
 

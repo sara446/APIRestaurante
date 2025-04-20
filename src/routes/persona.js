@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const personaSchema = require("../models/persona");
 //Nuevo Persona
-router.post("/personas", (req, res) => {
+router.post("/persona", (req, res) => {
     const persona = personaSchema(req.body);
     persona
         .save()
@@ -11,14 +11,14 @@ router.post("/personas", (req, res) => {
 });
 
 //Consultar todos los personas
-router.get("/personas", (req, res) => {
+router.get("/persona", (req, res) => {
     personaSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
 //Consultar un persona por su id
-router.get("/personas/:id", (req, res) => {
+router.get("/persona/:id", (req, res) => {
     const { id } = req.params;
     personaSchema
         .findById(id)
@@ -27,12 +27,12 @@ router.get("/personas/:id", (req, res) => {
 });
 
 //Modificar el nombre de un persona por su id
-router.put("/personas/:id", (req, res) => {
+router.put("/persona/:id", (req, res) => {
     const { id } = req.params;
-    const { nombre, edad, tipo, fecha } = req.body;
+    const { nombre, cedula, telefono, gmail, direccion } = req.body;
     personaSchema
         .updateOne({ _id: id }, {
-            $set: { nombre, edad, tipo, fecha }
+            $set: { nombre, cedula, telefono, gmail, direccion }
         })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
@@ -40,7 +40,7 @@ router.put("/personas/:id", (req, res) => {
 
 //Eliminar un persona por su id
 
-router.delete("/personas/:id", (req, res) => {
+router.delete("/persona/:id", (req, res) => {
     const { id } = req.params;
     personaSchema
         .findByIdAndDelete(id)
