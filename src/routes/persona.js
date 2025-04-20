@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const personaSchema = require("../models/persona");
-//Nuevo animal
+//Nuevo Persona
 router.post("/personas", (req, res) => {
     const persona = personaSchema(req.body);
     persona
@@ -10,27 +10,27 @@ router.post("/personas", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
-//Consultar todos los animales
+//Consultar todos los personas
 router.get("/personas", (req, res) => {
-    animalSchema.find()
+    personaSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
-//Consultar un animal por su id
+//Consultar un persona por su id
 router.get("/personas/:id", (req, res) => {
     const { id } = req.params;
-    animalSchema
+    personaSchema
         .findById(id)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
 
-//Modificar el nombre de un animal por su id
+//Modificar el nombre de un persona por su id
 router.put("/personas/:id", (req, res) => {
     const { id } = req.params;
     const { nombre, edad, tipo, fecha } = req.body;
-    animalSchema
+    personaSchema
         .updateOne({ _id: id }, {
             $set: { nombre, edad, tipo, fecha }
         })
@@ -38,11 +38,11 @@ router.put("/personas/:id", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
-//Eliminar un animal por su id
+//Eliminar un persona por su id
 
 router.delete("/personas/:id", (req, res) => {
     const { id } = req.params;
-    animalSchema
+    personaSchema
         .findByIdAndDelete(id)
         .then((data) => {
             res.json(data);

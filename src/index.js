@@ -3,14 +3,14 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const personaRoutes = require("./routes/persona");
-const areasRoutes = require("./routes/area");
+const reservaRoutes = require("./routes/reserva");
 const mongoose = require("mongoose");
 require('dotenv').config();
 app.use(parser.urlencoded({ extended: false })); //permite leer los datos que vienen en la petición
 app.use(parser.json()); // transforma los datos a formato JSON
 //Gestión de las rutas usando el middleware
 app.use("/api", personaRoutes);
-app.use("/api", areasRoutes);
+app.use("/api", reservaRoutes);
 app.use(express.json());
 //Conexión a la base de datos
 mongoose

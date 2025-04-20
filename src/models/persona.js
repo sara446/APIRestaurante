@@ -4,11 +4,11 @@ const personaSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    edad: {
+    telefono: {
         type: Number,
         required: true,
     },
-    tipo: {
+    gmail: {
         type: String,
         required: true,
     },
@@ -16,7 +16,7 @@ const personaSchema = mongoose.Schema({
         type: Date,
         required: false,
     },
-    codigo: {
+    lugar: {
         type: String,
         required: true,
     }
